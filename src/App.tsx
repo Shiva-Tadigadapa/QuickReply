@@ -1,6 +1,6 @@
+// App.tsx
 import React, { useState } from "react";
 import Slider from "./Slider/Slider";
-import MultiRangeSlider from "./Slider/MultiRangeSlider";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -27,7 +27,11 @@ const App: React.FC = () => {
         onChange={(value) => setDiscreteValue(value as number)}
       />
 
-      <MultiRangeSlider />
+      <Slider
+        type="Range"
+        handleSize="Size_24"
+        onChange={(value) => setRangeValues(value as { min: number; max: number })}
+      />
     </div>
   );
 };

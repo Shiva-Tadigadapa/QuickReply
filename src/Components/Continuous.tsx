@@ -1,6 +1,6 @@
 // components/Continuous.tsx
 import React from "react";
-import styles from "../Slider/Slider.module.scss";
+import styles from "./Slider.module.scss";
 
 interface ContinuousProps {
   value: number;
@@ -40,7 +40,7 @@ const Continuous: React.FC<ContinuousProps> = ({
         onChange={handleSliderChange}
         value={value}
         style={{
-          background: `linear-gradient(to right, green ${value}%, #f2f3f5 ${value}%)`,
+          background: `linear-gradient(to right, #47b647 ${value}%, #f2f3f5 ${value}%)`,
         }}
       />
       <div className={styles.tooltip} style={{ left: getTooltipPosition(value) }}>

@@ -1,6 +1,6 @@
 // Slider.tsx
 import React, { useState } from "react";
-import styles from "./Slider.module.scss";
+import styles from "./MainSlider.module.scss";
 import Continuous from "../Components/Continuous";
 import Discreet from "../Components/Discreet";
 import MultiRangeSlider from "./MultiRangeSlider";
@@ -50,7 +50,7 @@ const Slider: React.FC<SliderProps> = ({
   const step = type === "Discreet" ? 1 : 0.01;
 
   const intervals = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+  
   return (
     <div className={styles.slider}>
       {type === "Continuous" && (

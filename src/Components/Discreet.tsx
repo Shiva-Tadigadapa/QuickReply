@@ -1,6 +1,6 @@
 // components/Discreet.tsx
 import React from "react";
-import styles from "../Slider/Slider.module.scss";
+import styles from "./Slider.module.scss";
 
 interface DiscreetProps {
   value: number;
@@ -25,7 +25,7 @@ const Discreet: React.FC<DiscreetProps> = ({
 
   const gradient = (value: number) => {
     const percentage = (value / max) * 100;
-    return `linear-gradient(to right, green ${percentage}%, #f2f3f5 ${percentage}%)`;
+    return `linear-gradient(to right, #47b647 ${percentage}%, #f2f3f5 ${percentage}%)`;
   };
 
   const getTooltipPosition = (value: number) => {
