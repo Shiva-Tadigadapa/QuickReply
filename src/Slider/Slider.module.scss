@@ -1,0 +1,65 @@
+/* Slider.module.scss */
+
+.slider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.handle {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #f2f3f5; /* Bar color */
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px; /* Default size */
+    height: 24px;
+    background: green; /* Pointer color */
+    border: 6px solid white; /* Pointer outline color */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.144);
+  }
+
+  &::-moz-range-thumb {
+    width: 24px; /* Default size */
+    height: 24px;
+    background: green; /* Pointer color */
+    border: 2px solid white; /* Pointer outline color */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 0 2px white inset; /* White outline inside */
+  }
+  
+  &::-ms-thumb {
+    width: 24px; /* Default size */
+    height: 24px;
+    background: green; /* Pointer color */
+    border: 2px solid white; /* Pointer outline color */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 0 2px white inset; /* White outline inside */
+  }
+}
+
+.size32 {
+  &::-webkit-slider-thumb {
+    width: 32px;
+    height: 32px;
+  }
+
+  &::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+  }
+
+  &::-ms-thumb {
+    width: 32px;
+    height: 32px;
+  }
+}
