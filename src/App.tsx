@@ -13,24 +13,20 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h2>Continuous Slider (Single)</h2>
       <Slider
         type="Continuous"
         steps={100}
         handleSize="Size_24"
         onChange={(value) => setContinuousValue(value as number)}
       />
-      <div>Selected Value: {continuousValue}</div>
 
-      <h2>Discrete Slider (Single)</h2>
       <Slider
         type="Discreet"
         steps={10}
         handleSize="Size_24"
         onChange={(value) => setDiscreteValue(value as number)}
       />
-      <div>Selected Value: {discreteValue}</div>
-    
+
       <MultiRangeSlider />
     </div>
   );
