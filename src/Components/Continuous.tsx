@@ -27,10 +27,12 @@ const Continuous: React.FC<ContinuousProps> = ({
 
   return (
     <div className={styles.SliderDiv}>
-      <div className={styles.lableHolder}>
-        <h3>TIME</h3>
-        <h3>MINUTES</h3>
-      </div>
+      {/* <div className={styles.lableHolder}> */}
+      <h2 className="lable">
+        Continuous Input Slider
+      </h2>
+
+      {/* </div> */}
       <input
         type="range"
         min="0"

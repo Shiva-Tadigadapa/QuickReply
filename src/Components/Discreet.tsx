@@ -34,10 +34,9 @@ const Discreet: React.FC<DiscreetProps> = ({
 
   return (
     <div className={styles.Discreet}>
-      <div className={styles.lableHolder}>
-        <h3>TIME</h3>
-        <h3>MINUTES</h3>
-      </div>
+         <h2 className="lable">
+        Discreet Input Slider
+      </h2>
       <input
         type="range"
         min="0"

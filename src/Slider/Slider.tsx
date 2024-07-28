@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styles from "./MainSlider.module.scss";
 import Continuous from "../Components/Continuous";
 import Discreet from "../Components/Discreet";
-import MultiRangeSlider from "./MultiRangeSlider";
+import {DoubleScrollBar} from "./MultiRangeSlider";
 
 interface SliderProps {
   type: "Continuous" | "Range" | "Discreet";
@@ -63,8 +63,7 @@ const Slider: React.FC<SliderProps> = ({
         />
       )}
       {type === "Range" && (
-        <MultiRangeSlider
-        // Add props for MultiRangeSlider if needed
+        <DoubleScrollBar min={0} max={100} step={0}        // Add props for MultiRangeSlider if needed
         />
       )}
       {type === "Discreet" && (
