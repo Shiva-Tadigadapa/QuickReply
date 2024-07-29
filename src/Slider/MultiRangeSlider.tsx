@@ -7,6 +7,7 @@ interface DoubleScrollBarProps {
   step: number;
   className?: string;
   onChange?: (from: number, to: number) => void;
+  handleSize?: number; // New prop for handle size
 }
 
 export const DoubleScrollBar: React.FC<DoubleScrollBarProps> = ({
@@ -15,6 +16,7 @@ export const DoubleScrollBar: React.FC<DoubleScrollBarProps> = ({
   step,
   className,
   onChange,
+  handleSize = 24, // Default size
 }) => {
   const [inputFrom, setInputFrom] = useState(min);
   const [inputTo, setInputTo] = useState(max);
@@ -25,17 +27,14 @@ export const DoubleScrollBar: React.FC<DoubleScrollBarProps> = ({
   useEffect(() => {
     if (sliderRef.current === null) return;
 
-    // Ensure inputFrom is less than inputTo
     if (inputFrom > inputTo) {
       setInputFrom(inputTo);
     }
 
-    // Ensure inputTo is not less than inputFrom
     if (inputTo < inputFrom) {
       setInputTo(inputFrom);
     }
 
-    // Update slider position
     const rangeWidth = ((inputTo - inputFrom) / (max - min)) * 100;
     const leftPosition = ((inputFrom - min) / (max - min)) * 100;
 
@@ -56,7 +55,7 @@ export const DoubleScrollBar: React.FC<DoubleScrollBarProps> = ({
   }, [inputFrom, inputTo, min, max, onChange]);
 
   return (
-    <div className={` rangedContainer`}>
+    <div className={`rangedContainer ${className}`}>
       <h2 className="lable">Ranged Input Slider</h2>
       <div>
         <div className="range-slider">
@@ -78,6 +77,7 @@ export const DoubleScrollBar: React.FC<DoubleScrollBarProps> = ({
             step={step}
             value={inputFrom}
             onInput={(e) => setInputFrom(parseFloat(e.currentTarget.value))}
+            style={{ '--handle-size': `${handleSize}px` } as React.CSSProperties} // Apply handle size dynamically
           />
           <input
             type="range"
@@ -94,8 +94,8 @@ export const DoubleScrollBar: React.FC<DoubleScrollBarProps> = ({
             step={step}
             value={inputTo}
             onInput={(e) => setInputTo(parseFloat(e.currentTarget.value))}
+            style={{ '--handle-size': `${handleSize}px` } as React.CSSProperties} // Apply handle size dynamically
           />
-          {/* Tooltips */}
           <div className="tooltip left" ref={thumbFromRef}>
             {inputFrom}
           </div>

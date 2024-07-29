@@ -1,32 +1,38 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, Story } from '@storybook/react';
 import Slider from './Slider';
+import { action } from '@storybook/addon-actions';
 
-export default {
-  title: 'Components/Slider',
+const meta: Meta<typeof Slider> = {
   component: Slider,
-  argTypes: {
-    type: {
-      control: { type: 'select', options: ['Continuous', 'Discreet'] },
-    },
-    subtype: {
-      control: { type: 'select', options: ['Single', 'Range'] },
-    },
-    steps: {
-      control: { type: 'number', min: 1, max: 10 },
-    },
-    handleSize: {
-      control: { type: 'select', options: ['Size_24', 'Size_32'] },
-    },
-    onChange: { action: 'changed' },
+  tags: ['autodocs'],
+};
+
+export default meta;
+
+type Story = Story<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    type: "Discreet",
+    handleSize: 'Size_24',
+    steps: 2
   },
-} as ComponentMeta<typeof Slider>;
-
-const Template: ComponentStory<typeof Slider> = (args: any) => <Slider {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  type: 'Continuous',
-  subtype: 'Single',
-  handleSize: 'Size_24',
+  parameters: {
+    actions: {
+      handles: ['change', 'input'],
+    },
+  },
+  render: (args: any) => (
+    <Slider
+      {...args}
+      onChange={(value) => {
+        if (typeof value === 'number') {
+          action('Slider value changed')(value);
+        } else {
+          action('Range values changed')(value);
+        }
+      }}
+    />
+  ),
 };

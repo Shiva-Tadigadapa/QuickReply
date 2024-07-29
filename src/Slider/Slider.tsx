@@ -1,14 +1,13 @@
-// Slider.tsx
-import React, { useState } from "react";
-import styles from "./MainSlider.module.scss";
-import Continuous from "../Components/Continuous";
-import Discreet from "../Components/Discreet";
-import {DoubleScrollBar} from "./MultiRangeSlider";
+import React, { useState } from 'react';
+import styles from './MainSlider.module.scss';
+import Continuous from '../Components/Continuous';
+import Discreet from '../Components/Discreet';
+import { DoubleScrollBar } from './MultiRangeSlider';
 
 interface SliderProps {
-  type: "Continuous" | "Range" | "Discreet";
+  type: 'Continuous' | 'Range' | 'Discreet';
   steps?: number;
-  handleSize: "Size_24" | "Size_32";
+  handleSize: 'Size_24' | 'Size_32';
   onChange?: (value: number | { min: number; max: number }) => void;
 }
 
@@ -24,6 +23,8 @@ const Slider: React.FC<SliderProps> = ({
     max: 100,
   });
 
+  const cappedSteps = Math.min(steps, 10);
+
   const handleValueChange = (newValue: number) => {
     setValue(newValue);
     onChange?.(newValue);
@@ -31,12 +32,12 @@ const Slider: React.FC<SliderProps> = ({
 
   const handleRangeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
-    thumb: "min" | "max"
+    thumb: 'min' | 'max'
   ) => {
     const newValue = Number(event.target.value);
     setRangeValues((prevRangeValues) => {
       const newRangeValues = { ...prevRangeValues, [thumb]: newValue };
-
+  
       if (newRangeValues.min < newRangeValues.max) {
         onChange?.(newRangeValues);
         return newRangeValues;
@@ -46,27 +47,36 @@ const Slider: React.FC<SliderProps> = ({
     });
   };
 
-  const max = type === "Discreet" ? steps : 100;
-  const step = type === "Discreet" ? 1 : 0.01;
+  const generateIntervals = (steps: number) => {
+    return Array.from({ length: steps }, (_, index) => index );
+  };
 
-  const intervals = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  
+  const max = type === 'Discreet' ? cappedSteps : 100;
+  const step = type === 'Discreet' ? 1 : 0.01;
+  const intervals = type === 'Discreet' ? generateIntervals(cappedSteps) : [];
+
   return (
     <div className={styles.slider}>
-      {type === "Continuous" && (
+      {type === 'Continuous' && (
         <Continuous
           value={value}
-          max={max}
+          max={100}
           step={step}
           handleSize={handleSize}
           onChange={handleValueChange}
         />
       )}
-      {type === "Range" && (
-        <DoubleScrollBar min={0} max={100} step={0}        // Add props for MultiRangeSlider if needed
+      {type === 'Range' && (
+        <DoubleScrollBar
+          min={0}
+          max={100}
+          step={0}
+          className={styles.rangeSlider}
+          onChange={(from, to) => onChange?.({ min: from, max: to })}
+          handleSize={handleSize === 'Size_24' ? 24 : 32} // Convert to numeric value
         />
       )}
-      {type === "Discreet" && (
+      {type === 'Discreet' && (
         <Discreet
           value={value}
           max={max}

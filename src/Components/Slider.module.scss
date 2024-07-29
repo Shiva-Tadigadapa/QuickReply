@@ -1,5 +1,3 @@
-
-
 .handle {
   -webkit-appearance: none;
   width: 100%;
@@ -19,14 +17,29 @@
     border: 6px solid white;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.144);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.144);
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: #d1d1d1; // Gray border on hover
+    }
+
+    &:active {
+      background: #47b647; // Darker green when active
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.24); // Stronger shadow when active
+
+    }
+
+    &:focus {
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.144), 0 0 0 2px #47b647; // Green border on focus
+    }
   }
-  //when focused add a green border for the thumb
+
   &:focus::-webkit-slider-thumb {
     box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.144), 0 0 0 2px #47b647;
+    border-color: #ffffff;
   }
-  //when hovered add  gray border for the thumb
-  
+
   &::-moz-range-thumb {
     width: 24px;
     height: 24px;
@@ -35,6 +48,16 @@
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 0 2px white inset;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: #d1d1d1; // Gray border on hover
+    }
+
+    &:active {
+      background: #47b647; // Darker green when active
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.24); // Stronger shadow when active
+    }
   }
 
   &::-ms-thumb {
@@ -45,6 +68,16 @@
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 0 2px white inset;
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: #d1d1d1; // Gray border on hover
+    }
+
+    &:active {
+      background: #47b647; // Darker green when active
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.24); // Stronger shadow when active
+    }
   }
 }
 
@@ -63,7 +96,6 @@
     width: 32px;
     height: 32px;
   }
-  
 }
 
 .SliderDiv {
@@ -110,7 +142,8 @@
 
 .tooltip {
   position: absolute;
-  top: -2.5rem; /* Adjust as needed */
+  top: -2.5rem;
+  /* Adjust as needed */
   text-align: center;
   background: black;
   color: white;

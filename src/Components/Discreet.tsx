@@ -1,4 +1,3 @@
-// components/Discreet.tsx
 import React from "react";
 import styles from "./Slider.module.scss";
 
@@ -34,9 +33,7 @@ const Discreet: React.FC<DiscreetProps> = ({
 
   return (
     <div className={styles.Discreet}>
-         <h2 className="lable">
-        Discreet Input Slider
-      </h2>
+      <h2 className="lable">Discreet Input Slider</h2>
       <input
         type="range"
         min="0"
@@ -48,14 +45,14 @@ const Discreet: React.FC<DiscreetProps> = ({
         style={{ background: gradient(value) }}
       />
       <div className={styles.labels}>
-        {intervals.map((interval) => (
-          <div key={interval} className={styles.label}>
-            {interval}
+        {intervals.map((interval, index) => (
+          <div key={index} className={styles.label}>
+            {interval.toFixed(0)}
           </div>
         ))}
       </div>
       <div className={styles.tooltip} style={{ left: getTooltipPosition(value) }}>
-        {intervals[value]}
+        {value.toFixed(0)}
       </div>
     </div>
   );
