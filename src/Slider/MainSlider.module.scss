@@ -9,7 +9,20 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 5rem;
+  margin-top: 1rem;
+}
+.link{
+  color: #000;
+  font-size: 1.5rem;
+}
+.quickreply{
+  font-family: poppins;
+  font-weight: 100
 }
 
-
+.linkContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}

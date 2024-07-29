@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import Slider from './Slider';
 import { action } from '@storybook/addon-actions';
 
@@ -10,9 +10,9 @@ const meta: Meta<typeof Slider> = {
 
 export default meta;
 
-type Story = Story<typeof meta>;
+type StoryType = StoryFn<typeof Slider>;
 
-export const Default: Story = {
+export const Default: StoryType = {
   args: {
     type: "Discreet",
     handleSize: 'Size_24',
@@ -23,7 +23,7 @@ export const Default: Story = {
       handles: ['change', 'input'],
     },
   },
-  render: (args: any) => (
+  render: (args) => (
     <Slider
       {...args}
       onChange={(value) => {

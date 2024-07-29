@@ -51,7 +51,10 @@ const Discreet: React.FC<DiscreetProps> = ({
           </div>
         ))}
       </div>
-      <div className={styles.tooltip} style={{ left: getTooltipPosition(value) }}>
+      <div
+        className={styles.tooltip}
+        style={{ left: getTooltipPosition(value) }}
+      >
         {value.toFixed(0)}
       </div>
     </div>

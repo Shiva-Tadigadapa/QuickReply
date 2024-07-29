@@ -28,9 +28,7 @@ const Continuous: React.FC<ContinuousProps> = ({
   return (
     <div className={styles.SliderDiv}>
       {/* <div className={styles.lableHolder}> */}
-      <h2 className="lable">
-        Continuous Input Slider
-      </h2>
+      <h2 className="lable">Continuous Input Slider</h2>
 
       {/* </div> */}
       <input
@@ -45,7 +43,10 @@ const Continuous: React.FC<ContinuousProps> = ({
           background: `linear-gradient(to right, #47b647 ${value}%, #f2f3f5 ${value}%)`,
         }}
       />
-      <div className={styles.tooltip} style={{ left: getTooltipPosition(value) }}>
+      <div
+        className={styles.tooltip}
+        style={{ left: getTooltipPosition(value) }}
+      >
         {value.toFixed(2)}
       </div>
     </div>

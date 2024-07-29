@@ -7,7 +7,7 @@ interface DoubleScrollBarProps {
   step: number;
   className?: string;
   onChange?: (from: number, to: number) => void;
-  handleSize?: number; // New prop for handle size
+  handleSize?: number; 
 }
 
 export const DoubleScrollBar: React.FC<DoubleScrollBarProps> = ({
@@ -77,7 +77,7 @@ export const DoubleScrollBar: React.FC<DoubleScrollBarProps> = ({
             step={step}
             value={inputFrom}
             onInput={(e) => setInputFrom(parseFloat(e.currentTarget.value))}
-            style={{ '--handle-size': `${handleSize}px` } as React.CSSProperties} // Apply handle size dynamically
+            style={{ '--handle-size': `${handleSize}px` } as React.CSSProperties} 
           />
           <input
             type="range"
